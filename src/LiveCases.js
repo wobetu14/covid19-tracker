@@ -1,15 +1,19 @@
 import React from 'react'
 import './LiveCases.css'
-import { Table } from '@material-ui/core'
+import numeral from 'numeral'
+
+// import { Table } from '@material-ui/core'
 
 function LiveCases({countries}) {
     return (
         <div className='liveCases'>
             {
-                countries.map(({country, cases})=>(
-                    <tr>
+                countries.map(({id, country, cases})=>(
+                    <tr key={id}>
                         <td>{country}</td>
-                        <td>{cases}</td>
+                        <td>
+                            <strong>{numeral(cases).format("0,0")}</strong>
+                        </td>
                     </tr>
                 ))
             }
